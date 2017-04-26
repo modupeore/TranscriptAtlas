@@ -16,7 +16,36 @@ GetOptions(
                         "4|s|in4|species=s"	=>	\$species,
                         "5|c|in5|chrom=s"	=>	\$chrom,
                         "6|o|out|output=s"	=>	\$output,
-												"7|line=s"	=>\$linez);
+			"7|line=s"	=>\$linez
+);
+
+my $AILHC = 'track type=vcfTabix name="AIL HC&HS" description="AIL HC&HS" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/AIL%20HC&HS.vcf.gz';
+
+my $AIL = 'track type=vcfTabix name="AIL-Normal" description="AIL-Normal" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/AIL-Normal.vcf.gz';
+
+my $Broiler = 'track type=vcfTabix name="Broiler" description="Broiler" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Broiler.vcf.gz';
+
+my $CELC = 'track type=vcfTabix name="CELC" description="CELC" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/CELC.vcf.gz';
+
+my $FayoumiChick = 'track type=vcfTabix name="Fayoumi-chick HS" description="Fayoumi-chick HS" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi-chick%20HS.vcf.gz';
+
+my $FayoumiHC = 'track type=vcfTabix name="Fayoumi HC&HS" description="Fayoumi HC&HS" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi%20HC&HS.vcf.gz';
+
+my $FayoumiNormal = 'track type=vcfTabix name="Fayoumi-Normal" description="Fayoumi-Normal" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi-Normal.vcf.gz';
+
+my $Fayoumi = 'track type=vcfTabix name="Fayoumi" description="Fayoumi" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi.vcf.gz';
+
+my $FayoumiBroiler = 'track type=vcfTabix name="Fayoumi x Broiler" description="Fayoumi x Broiler" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi%20x%20Broiler.vcf.gz';
+
+my $Illinois = 'track type=vcfTabix name="Illinois" description="Illinois" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Illinois.vcf.gz';
+
+my $LMH = 'track type=vcfTabix name="LMH" description="LMH" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/LMH.vcf.gz';
+
+my $Ross = 'track type=vcfTabix name="Ross" description="Ross" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Ross.vcf.gz';
+
+my $Ugandan = 'track type=vcfTabix name="Ugandan" description="Ugandan" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Ugandan.vcf.gz';
+
+my $WLH = 'track type=vcfTabix name="WLH" description="WLH" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/WLH.vcf.gz';
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # - - - - - - - - - - - - G L O B A L  V A R I A B L E S- - - - - - - - - - - - - -
@@ -82,8 +111,61 @@ if ($species =~ /gallus/) {
 		foreach (@lines){
 			$_ =~ s/%%/ /g;
 			$syntax .= "line = '$_' OR ";
+			if ($_ eq "Ross"){
+				`echo $Ross >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "Illinois"){
+				`echo $Illinois >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "Ugandan"){
+				`echo $Ugandan >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "Fayoumi"){
+				`echo $Fayoumi >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "Fayoumi-Normal"){
+				`echo $FayoumiNormal >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "LMH"){
+				`echo $LMH >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "Broiler"){
+				`echo $Broiler >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "WLH"){
+				`echo $WLH >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "AIL-Normal"){
+				`echo $AIL >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "Fayoumi-chick HS"){
+				`echo $FayoumiChick >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "Fayoumi HC&HS"){
+				`echo $FayoumiHC >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "Fayoumi x Broiler"){
+				`echo $FayoumiBroiler >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}
+			elsif ($_ eq "AIL HC&HS"){
+				`echo $AILHC >> $ARGV[1]`;
+				`echo >> $ARGV[1]`;
+			}	
 		}
 		$syntax = substr($syntax, 0, -3); $syntax .= ")";
+		$suffix = '&hgct_customText=http://raven.anr.udel.edu/~modupe/atlas/'.$ARGV[0];
 		
 	}
 	$syntax .= " order by library\" -v -o ";
@@ -115,7 +197,7 @@ if ($species =~ /gallus/) {
     #storing into a hash table.
     $GENES{$line}{$chrom}{$position}{$number{$line}{$chrom}{$position}} = "$ref|$alt|$class|$ann|$genename|$dbsnp|$newlib";
   }
-  close (IN); `rm -rf $tempoutput`;
+  close (IN); 
   
   foreach my $a (sort keys %GENES){
     print OUT "<tr><th class=\"geneds\" colspan=100%>$a</th></tr>\n";
@@ -186,7 +268,7 @@ else {
       $GENES{$chrom}{$position}{$number{$chrom}{$position}} = "$ref|$alt|$class|$ann|$genename|$dbsnp|$newlib";
     }
   }
-  close (IN); `rm -rf $tempoutput`;
+  close (IN); 
 
   foreach my $a (keys %GENES){
     foreach my $b (sort keys % {$GENES{$a} }){
