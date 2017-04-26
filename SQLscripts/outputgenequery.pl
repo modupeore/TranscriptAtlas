@@ -78,7 +78,6 @@ foreach (@threads){$_->join;}
 
 my $command="cat $newfile >> $output1";
 system($command);
-`rm -rf $newfile`;
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
