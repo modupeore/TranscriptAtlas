@@ -2,9 +2,7 @@
 use strict;
 use Getopt::Long;
 use Pod::Usage;
-use File::Basename qw(dirname);
-use Cwd qw(abs_path);
-use lib dirname(abs_path $0) . '/SUB';
+use lib '/home/modupe/SCRIPTS/SUB';
 use routine;
 
 #ARGUMENTS
@@ -19,33 +17,33 @@ GetOptions(
 			"7|line=s"	=>\$linez
 );
 
-my $AILHC = 'track type=vcfTabix name="AIL HC&HS" description="AIL HC&HS" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/AIL%20HC&HS.vcf.gz';
+my $AILHC = 'track type=vcfTabix name=\"AIL HC&HS\" description=\"AIL HC&HS\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/AIL%20HC\&HS.vcf.gz';
 
-my $AIL = 'track type=vcfTabix name="AIL-Normal" description="AIL-Normal" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/AIL-Normal.vcf.gz';
+my $AIL = 'track type=vcfTabix name=\"AIL-Normal\" description=\"AIL-Normal\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/AIL-Normal.vcf.gz';
 
-my $Broiler = 'track type=vcfTabix name="Broiler" description="Broiler" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Broiler.vcf.gz';
+my $Broiler = 'track type=vcfTabix name=\"Broiler\" description=\"Broiler\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Broiler.vcf.gz';
 
-my $CELC = 'track type=vcfTabix name="CELC" description="CELC" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/CELC.vcf.gz';
+my $CELC = 'track type=vcfTabix name=\"CELC\" description=\"CELC\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/CELC.vcf.gz';
 
-my $FayoumiChick = 'track type=vcfTabix name="Fayoumi-chick HS" description="Fayoumi-chick HS" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi-chick%20HS.vcf.gz';
+my $FayoumiChick = 'track type=vcfTabix name=\"Fayoumi-chick HS\" description=\"Fayoumi-chick HS\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi-chick%20HS.vcf.gz';
 
-my $FayoumiHC = 'track type=vcfTabix name="Fayoumi HC&HS" description="Fayoumi HC&HS" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi%20HC&HS.vcf.gz';
+my $FayoumiHC = 'track type=vcfTabix name=\"Fayoumi HC&HS\" description=\"Fayoumi HC&HS\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi%20HC\&HS.vcf.gz';
 
-my $FayoumiNormal = 'track type=vcfTabix name="Fayoumi-Normal" description="Fayoumi-Normal" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi-Normal.vcf.gz';
+my $FayoumiNormal = 'track type=vcfTabix name=\"Fayoumi-Normal\" description=\"Fayoumi-Normal\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi-Normal.vcf.gz';
 
-my $Fayoumi = 'track type=vcfTabix name="Fayoumi" description="Fayoumi" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi.vcf.gz';
+my $Fayoumi = 'track type=vcfTabix name=\"Fayoumi\\" description=\"Fayoumi\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi.vcf.gz';
 
-my $FayoumiBroiler = 'track type=vcfTabix name="Fayoumi x Broiler" description="Fayoumi x Broiler" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi%20x%20Broiler.vcf.gz';
+my $FayoumiBroiler = 'track type=vcfTabix name=\"Fayoumi x Broiler\" description=\"Fayoumi x Broiler\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi%20x%20Broiler.vcf.gz';
 
-my $Illinois = 'track type=vcfTabix name="Illinois" description="Illinois" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Illinois.vcf.gz';
+my $Illinois = 'track type=vcfTabix name=\"Illinois\" description=\"Illinois\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Illinois.vcf.gz';
 
-my $LMH = 'track type=vcfTabix name="LMH" description="LMH" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/LMH.vcf.gz';
+my $LMH = 'track type=vcfTabix name=\"LMH\" description=\"LMH\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/LMH.vcf.gz';
 
-my $Ross = 'track type=vcfTabix name="Ross" description="Ross" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Ross.vcf.gz';
+my $Ross = 'track type=vcfTabix name=\"Ross\" description=\"Ross\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Ross.vcf.gz';
 
-my $Ugandan = 'track type=vcfTabix name="Ugandan" description="Ugandan" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Ugandan.vcf.gz';
+my $Ugandan = 'track type=vcfTabix name=\"Ugandan\" description=\"Ugandan\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Ugandan.vcf.gz';
 
-my $WLH = 'track type=vcfTabix name="WLH" description="WLH" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/WLH.vcf.gz';
+my $WLH = 'track type=vcfTabix name=\"WLH\" description=\"WLH\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/WLH.vcf.gz';
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # - - - - - - - - - - - - G L O B A L  V A R I A B L E S- - - - - - - - - - - - - -
@@ -70,7 +68,7 @@ my (%CHROM, %FPKM, %GENES, %number);
 # OPENING OUTPUT FILE
 open(OUT, '>', $output);
 open(OUTDOWN, '>', $downloadoutput);
-
+`rm -rf $ARGV[1]`; #remove the custom file
 #print headers
 print OUT "<table class=\"gened\">
       <tr>
@@ -106,60 +104,61 @@ if ($species =~ /gallus/) {
 		$syntax = substr($syntax, 0, -3); $syntax .= ")";
   }
 	if ($linez){
+		$linez = uc($linez); #convert to uppercase
 		my @lines = split(",",$linez);
 		$syntax .= " AND (";
 		foreach (@lines){
 			$_ =~ s/%%/ /g;
 			$syntax .= "line = '$_' OR ";
-			if ($_ eq "Ross"){
+			if ($_ =~ /Ross/i){
 				`echo $Ross >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "Illinois"){
+			elsif ($_ =~ /Illinois/i){
 				`echo $Illinois >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "Ugandan"){
+			elsif ($_ =~ /Ugandan/i){
 				`echo $Ugandan >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "Fayoumi"){
+			elsif ($_ =~ /Fayoumi/i){
 				`echo $Fayoumi >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "Fayoumi-Normal"){
+			elsif ($_ =~ /Fayoumi-Normal/i){
 				`echo $FayoumiNormal >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "LMH"){
+			elsif ($_ =~ /LMH/i){
 				`echo $LMH >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "Broiler"){
+			elsif ($_ =~ /Broiler/i){
 				`echo $Broiler >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "WLH"){
+			elsif ($_ =~ /WLH/i){
 				`echo $WLH >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "AIL-Normal"){
+			elsif ($_ =~ /AIL-Normal/i){
 				`echo $AIL >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "Fayoumi-chick HS"){
+			elsif ($_ =~ /Fayoumi-chick HS/i){
 				`echo $FayoumiChick >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "Fayoumi HC&HS"){
+			elsif ($_ =~ /Fayoumi HC&HS/i){
 				`echo $FayoumiHC >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "Fayoumi x Broiler"){
+			elsif ($_ =~ /Fayoumi x Broiler/i){
 				`echo $FayoumiBroiler >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}
-			elsif ($_ eq "AIL HC&HS"){
+			elsif ($_ =~ /AIL HC&HS/i){
 				`echo $AILHC >> $ARGV[1]`;
 				`echo >> $ARGV[1]`;
 			}	
@@ -168,7 +167,7 @@ if ($species =~ /gallus/) {
 		$suffix = '&hgct_customText=http://raven.anr.udel.edu/~modupe/atlas/'.$ARGV[0];
 		
 	}
-	$syntax .= " order by library\" -v -o ";
+	$syntax .= "\" -v -o ";
   print "$ibis$syntax$tempoutput\n\n";
   `$ibis$syntax$tempoutput`;
   
@@ -177,7 +176,7 @@ if ($species =~ /gallus/) {
     chomp;
     my ($line, $chrom, $position, $ref, $alt, $class, $ann, $genename, $dbsnp, $library) = split(/\, /, $_, 10);
     #removing the quotation marks from the words
-    $line = uc(substr($line,1,-1));$chrom = substr($chrom,1,-1);
+    $line = substr($line,1,-1);$chrom = substr($chrom,1,-1);
     $ref = substr($ref,1,-1); $alt = substr($alt,1,-1);
     $class = substr($class,1,-1); $ann = substr($ann,1,-1);
     $library = substr($library,1,-1); my $newlib = undef; my %solib;
@@ -291,4 +290,5 @@ else {
 
 close (OUT); close (OUTDOWN);
 exit;
+
 

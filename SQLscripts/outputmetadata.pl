@@ -3,9 +3,7 @@ use strict;
 use DBI;
 use Getopt::Long;
 use Pod::Usage;
-use File::Basename qw(dirname);
-use Cwd qw(abs_path);
-use lib dirname(abs_path $0) . '/SUB';
+use lib '/home/modupe/SCRIPTS/SUB';
 use passw;
 use routine;
 
