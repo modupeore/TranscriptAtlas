@@ -82,7 +82,7 @@
           }
       ?>
     </p>
-		<?PHP
+<?PHP
 		if ($_SESSION['genomename'] == "Chicken"){
 			echo '<p class="pages"><span>Select Lines <font size=2pt>(optional)</font>: </span>';
 			echo '<select name="lines[]" id="lines" size=4 multiple="multiple">';
@@ -92,15 +92,14 @@
         <option value="Ugandan">Ugandan</option>
 				<option value="Fayoumi">Fayoumi</option>
 				<option value="Fayoumi-Normal">Fayoumi-Normal</option>
-				<option value="Fayoumi-embryo%%HS">Fayoumi-embryo HS</option>
 				<option value="Fayoumi-chick%%HS">Fayoumi-chick HS</option>
-				<option value="Fayoumi%%HC&HS">Fayoumi HC&HS</option>
+				<option value="Fayoumi%%HC\&HS">Fayoumi HC&HS</option>
 				option value="Fayoumi%%x%%Broiler">Fayoumi x Broiler</option>
 				<option value="Broiler">Broiler</option>
 				<option value="WLH">WLH</option>
 				<option value="LMH">LMH</option>
 				<option value="AIL-Normal">AIL-Normal</option>
-				<option value="AIL%%HC&HS">AIL HC&HS</option>';
+				<option value="AIL%%HC\&HS">AIL HC&HS</option>';
       echo '</select>';
 			echo '</p>';
 		}
@@ -134,9 +133,9 @@
 			$linez = rtrim($linez,",");
 			$pquery .= " -line ".$linez;
 			$newbed = "OUTPUT/custom-".$explodedate.".bed";
+			$pquery .= " $newbed $base_path/$newbed";
 		} else { $newbed = 'gallus.bed';}
-		$pquery .= " $newbed $base_path/$newbed";
-//		print $pquery;
+		//print $pquery;
     shell_exec($pquery);
     $prefix = 'http://genome.ucsc.edu/cgi-bin/hgTracks?db=galGal4&position=';
     $suffix = '&hgct_customText=http://raven.anr.udel.edu/~modupe/atlas/'.$newbed;
@@ -157,13 +156,12 @@
       echo $rquery;
       if(isset($_POST['downloadvalues'])){
         file_put_contents($output2, $dloadquery);
-        $filer = "file=$output2&name=variants.txt";
         print("<script>location.href='results.php?file=$output2&name=variants.txt'</script>");
 
       }
 
       echo '</form></div>';
-      shell_exec ("rm -f ".$output1);
+      //shell_exec ("rm -f ".$output1);
     }
   }
 ?>

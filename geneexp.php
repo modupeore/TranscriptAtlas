@@ -57,7 +57,7 @@
         <option value="ovary">ovary</option>
         <option value="heart">heart</option>
         <option value="lung">lung</option>
-        <option value="breast muscle">breast muscle</option>
+        <option value="'breast muscle'">breast muscle</option>
         <option value="LMH">LMH</option>
         <option value="brain">brain</option>
         <option value="WLH">WLH</option>
@@ -65,9 +65,9 @@
         <option value="retina">retina</option>
         <option value="Hypothalamus">Hypothalamus</option>
         <option value="Pituitary">Pituitary</option>
-        <option value="Primordial Germ Cell">Primordial Germ Cell</option>
-        <option value="Abdominal Adipose">Abdominal Adipose</option>
-        <option value="Cardiac Adipose">Cardiac Adipose</option>
+        <option value="'Primordial Germ Cell'">Primordial Germ Cell</option>
+        <option value="'Abdominal Adipose'">Abdominal Adipose</option>
+        <option value="'Cardiac Adipose'">Cardiac Adipose</option>
       </select></p>
 			<p class=pages><span>Order columns : </span>
 			<select name="col1" id="test" required>
@@ -123,7 +123,7 @@
         <option value="tooth">tooth</option>
         <option value="white_matter">white_matter</option>
       </select></p>
-		</div>
+		</div><br>
 <center><input type="submit" name="salute" value="View Results" onClick="this.value='Sending… Please Wait'; style.backgroundColor = '#75684a'; this.form.submit();"></center>
 </form>
 </div>
@@ -135,20 +135,34 @@
     if(($col1 == $col2) || ($col2 == $col3) || ($col3 == $col1)){
 			echo "<center>Error in Column orientation</center>";
 		} else {
+			$output = "$base_path/OUTPUT/GeneExp_".$explodedate;
+			$output1 = "$base_path/OUTPUT/GeneExp_".$explodedate.".txt";
 			foreach ($_POST["tissue"] as $tissue){
 			$tissues .= $tissue. ",";
 			}
 			$tissues = rtrim($tissues,",");
 			$genenames = rtrim($genenames,", ");
-			$pquery = "perl ".$base_path."/SQLscripts/outputgeneslist.pl -1 ".$genenames." -2 ".$tissues." -3 ".$_POST['species']." -col1 ".$_POST['col1']." -col2 ".$_POST['col2']." -col3 ".$_POST['col3']."";
+			$pquery = "perl ".$base_path."/SQLscripts/outputgeneslist.pl -1 ".$genenames." -2 ".$tissues." -3 ".$_POST['species']." -o ".$output." -col1 ".$_POST['col1']." -col2 ".$_POST['col2']." -col3 ".$_POST['col3']."";
+			//print $pquery;
 			$rquery = shell_exec($pquery); 
 			if (count(explode ("\n", $rquery)) > 11){
+				echo '<div class="gened">';
+				echo '<form action="' . $phpscript . '" method="post">';
+				echo '<p class="gened">Download the results below. ';
+				$newbrowser = "results.php?file=$output1&name=genes_expression.txt";
+				echo '<input type="button" class="browser" value="Download Results" onclick="window.open(\''. $newbrowser .'\')"><br>';
+
+				echo '</form></div>';
+			
+			
 				echo '<div class="cexpand">'.$rquery.'</div><br>';
 		  } else {
 				echo '<div class="cexpand">No result based on search criteria</div><br>';
 			}
     }
-  }
+  } else {
+		echo "<center>Forgot something ?</center>";
+	}
 ?>
   </div>
 <?php
