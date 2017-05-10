@@ -131,7 +131,7 @@ function d_geneexp_header() {
         if ($("#species").val() === "gallus") {
           $("#gallus").show();
           $(function() {
-            var availableTags = <?php include("names/chickenall.php"); ?>;
+            var availableTags = <?php include("names/chickengene.php"); ?>;
             
             function split( val ) {
               return val.split( /,\s*/ );
@@ -177,7 +177,7 @@ function d_geneexp_header() {
         if($("#species").val() === "mus_musculus") {
           $("#mus_musculus").show();
           $(function() {
-            var availableTags = <?php include("names/mouseall.php"); ?>;
+            var availableTags = <?php include("names/mousegene.php"); ?>;
             $("#genename").autocomplete({
               source: availableTags,
               autoFocus:true
@@ -189,7 +189,7 @@ function d_geneexp_header() {
         if($("#species").val() === "alligator_mississippiensis") {
           $("#alligator_mississippiensis").show();
           $(function() {
-            var availableTags = <?php include("names/alliall.php"); ?>;
+            var availableTags = <?php include("names/alligatorgene.php"); ?>;
             $("#genename").autocomplete({
               source: availableTags,
               autoFocus:true
@@ -265,7 +265,7 @@ function d_kaks_header() {
   <script src="jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
   <script>
    $(function() {
-      var availableTags = <?php include("names/chickenall.php"); ?>;
+      var availableTags = <?php include("names/chickengene.php"); ?>;
       function split( val ) {
 				return val.split( /,\s*/ );
 			}

@@ -10,17 +10,17 @@
   if (!empty($_REQUEST['variantsview'] == "chicken"))  {
     $_SESSION['genomename'] = "Chicken";
     $_SESSION['species'] = "gallus";
-    $_SESSION['variantlist'] = "names/chickenvname.php";
+    $_SESSION['variantlist'] = "names/chickenvariant.php";
   }
   elseif (!empty($_REQUEST['variantsview'] == "mouse")) {
     $_SESSION['genomename'] = "Mouse";
     $_SESSION['species'] = "mus_musculus";
-    $_SESSION['variantlist'] = "names/mousevname.php";
+    $_SESSION['variantlist'] = "names/mousevariant.php";
   }
   elseif (!empty($_REQUEST['variantsview'] == "alligator")) {
     $_SESSION['genomename'] = "Alligator";
     $_SESSION['species'] = "alligator_mississippiensis";
-    $_SESSION['variantlist'] = "names/allivname.php";
+    $_SESSION['variantlist'] = "names/allivariant.php";
   }
   if (!empty($_SESSION['species']) && !empty($_REQUEST['variantsview'])){
     print "<script>window.location.href='variants-genename.php'</script>";

@@ -346,9 +346,9 @@
           $dataline .= $check.",";
         }
         $dataline = rtrim($dataline, ",");
-        $listfile = "fpkm_".$explodedate.".txt";
-        $output1 = "$base_path/OUTPUT/$listfile";
-        $pquery = "perl ".$base_path."/SQLscripts/outputgenequery.pl -1 ".$dataline." -2 ".$output1;
+        $output = "$base_path/OUTPUT/fpkm_".$explodedate;
+	$output1 = "$base_path/OUTPUT/fpkm_".$explodedate.".txt";
+        $pquery = "perl ".$base_path."/SQLscripts/outputgenequery.pl -1 ".$dataline." -2 ".$output;
         #echo $pquery;
 	shell_exec($pquery); 
         print("<script>location.href='results.php?file=$output1&name=fpkm.txt'</script>");

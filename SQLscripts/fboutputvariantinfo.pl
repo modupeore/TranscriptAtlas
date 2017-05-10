@@ -168,7 +168,7 @@ if ($species =~ /gallus/) {
 		
 	}
 	$syntax .= "\" -v -o ";
-  print "$ibis$syntax$tempoutput\n\n";
+  #print "$ibis$syntax$tempoutput\n\n";
   `$ibis$syntax$tempoutput`;
   
   open(IN,'<',$tempoutput);

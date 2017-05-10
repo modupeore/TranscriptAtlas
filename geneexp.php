@@ -142,14 +142,14 @@
 			}
 			$tissues = rtrim($tissues,",");
 			$genenames = rtrim($genenames,", ");
-			$pquery = "perl ".$base_path."/SQLscripts/outputgeneslist.pl -1 ".$genenames." -2 ".$tissues." -3 ".$_POST['species']." -o ".$output." -col1 ".$_POST['col1']." -col2 ".$_POST['col2']." -col3 ".$_POST['col3']."";
+			$pquery = "perl ".$base_path."/SQLscripts/outputgeneslist.pl -1 '".$genenames."' -2 ".$tissues." -3 ".$_POST['species']." -o ".$output." -col1 ".$_POST['col1']." -col2 ".$_POST['col2']." -col3 ".$_POST['col3']."";
 			//print $pquery;
 			$rquery = shell_exec($pquery); 
 			if (count(explode ("\n", $rquery)) > 11){
 				echo '<div class="gened">';
 				echo '<form action="' . $phpscript . '" method="post">';
 				echo '<p class="gened">Download the results below. ';
-				$newbrowser = "results.php?file=$output1&name=genes_expression.txt";
+				$newbrowser = "results.php?file=$output1&name=genes-stats.txt";
 				echo '<input type="button" class="browser" value="Download Results" onclick="window.open(\''. $newbrowser .'\')"><br>';
 
 				echo '</form></div>';
@@ -160,7 +160,7 @@
 				echo '<div class="cexpand">No result based on search criteria</div><br>';
 			}
     }
-  } else {
+  } elseif (!empty($_POST['salute'])) {
 		echo "<center>Forgot something ?</center>";
 	}
 ?>

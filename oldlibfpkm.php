@@ -3,7 +3,7 @@
   require_once('atlas_header.php'); //The header
   require_once('atlas_fns.php'); //All the routines
   d_libfpkm_header(); //Display header
-  $phpscript = "libfpkm.php";
+  $phpscript = "oldlibfpkm.php";
 ?>
 <?php
   /* Connect to the database */
@@ -105,18 +105,17 @@ $liblist = null;
 ?>
 <?php
     if (!empty($liblist)){
-	$output = "$base_path/OUTPUT/$thename"."_".$explodedate;
-	$output1 = "$base_path/OUTPUT/$thename"."_".$explodedate.".txt";
+	$genelist = $thename."_".$explodedate.".txt";
+	$output1 = "$base_path/OUTPUT/$genelist";
       if (preg_match("/Overlap$/",$thename)) {
-        $pquery = "perl $base_path/SQLscripts/outputcommagenes.pl -1 ".$liblist." -2 ".$output."";
+        $pquery = "perl $base_path/SQLscripts/outputcommagenes-old.pl -1 ".$liblist." -2 ".$output1."";
       }
       else {
-        $pquery = "perl $base_path/SQLscripts/outputgenequery.pl -1 ".$liblist." -2 ".$output."";
+        $pquery = "perl $base_path/SQLscripts/outputgenequery-old.pl -1 ".$liblist." -2 ".$output1."";
       }
 ?>
    <br>Processing<br>
 <?php
-      //print $pquery;
       shell_exec($pquery);
       $filesize = explode("/", exec("du -k $output1")); 
       if ($filesize[0] > 1000 ){ //zip files larger than 1Mb

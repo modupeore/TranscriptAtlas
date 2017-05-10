@@ -31,7 +31,7 @@ my (%GENES);
 #gene_short_name, chrom_no, chrom_start, chrom_stop, fpkm, library_id
 my @tissue = split("\,",$tissue);
 foreach my $ftissue (@tissue){
-	my @genes = split("\,", $gene);
+	my @genes = split("\, ", $gene);
 	foreach my $fgene (@genes) {
 		if ($species =~ /gallus/) {
 			$ibis = "/home/modupe/.bin/bin/ibis -d $chickengenes -q '";
@@ -43,7 +43,7 @@ foreach my $ftissue (@tissue){
 			die "Error in input options\n";
 		}
 		$ftissue = uc($ftissue);
-		$syntax = "select genename, line, max(fpkm), avg(fpkm), min(fpkm) where tissue = \"$ftissue\" and genename like \"%$fgene%\"' -v -o $output.v1";
+		$syntax = "select genename, line, max(fpkm), avg(fpkm), min(fpkm) where tissue = \"$ftissue\" and genename = \"$fgene\"' -v -o $output.v1";
 		
 		#print $syntax,"\n";
 		`$ibis$syntax `;
@@ -52,7 +52,7 @@ foreach my $ftissue (@tissue){
 		while (<IN>){
 			chomp;
 			my ($genename, $line, $max, $avg, $min) = split(/\, /, $_, 5);
-			$max = sprintf("%.5f",$max); $min = sprintf("%.5f",$min); $avg = sprintf("%.5f",$avg);
+			$max = sprintf("%.5g",$max); $min = sprintf("%.5g",$min); $avg = sprintf("%.5g",$avg);
 
 			#removing the quotation marks from the words
 			$line = substr($line,1,-1); $genename = substr($genename,1,-1); 
