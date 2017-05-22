@@ -93,15 +93,25 @@ foreach (@headers){
 }
 
 @headers = split("\,", $specifics);
-
+#my @tempgenearray;
 foreach my $newgene (sort keys %CHROM){ 
         if ($newgene =~ /^[\d\w].*,/){
 		push @genearray, $newgene;
-		my @getchr = split('\|',$newgene);
+		my @getchr = split('\|',$newgene,2);
 		my @sogene = split(',',$getchr[0]);
-		push @genearray, "$_|$getchr[1]" foreach(sort @sogene);
-        }
+		foreach my $cutgene (sort @sogene){
+			foreach my $tempgene (sort keys %CHROM) {
+				unless ($tempgene =~ /^[\d\w].*,/) {
+					my $Ntempgene = (split('\|', $tempgene))[0];
+					if ($cutgene eq $Ntempgene) {
+						push @genearray, $tempgene;
+					}
+				}
+			}
+        	}
+	}
 }
+#print @genearray; die;
 push @VAR, [ splice @genearray, 0, 2000 ] while (@genearray);
 
 my $newfile;

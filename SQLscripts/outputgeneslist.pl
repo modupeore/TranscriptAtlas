@@ -138,7 +138,7 @@ print "\t\t<td class=\"gened\" rowspan=\"$countsec\">$column2</td>\n";
                         unless ($J <= 0 || $J == $countsec) { print "\n\t<tr>\n";}
                         print "\t\t<td class=\"gened\">$column3</td>\n";
                         my @all = split('\|', $GENES{$column1}{$column2}{$column3}, 3);
-print OUT "$column1\t$column2\t$all[0]\t$all[1]\t$all[2]\n";
+print OUT "$column1\t$column2\t$column3\t$all[0]\t$all[1]\t$all[2]\n";
 print "\t       <td class=\"gened\">$all[0]</td>
                 <td class=\"gened\">$all[1]</td>
                 <td class=\"gened\">$all[2]</td>

@@ -16,14 +16,16 @@
 $liblist = null;
   if (!empty($_REQUEST['geneinfo'] == "View Gallus") || !empty($_REQUEST['geneinfo'] == "View Gallus Overlapping Genes")) {
     $result = $db_conn->query($gquery);
-     while ($row = $result->fetch_assoc()) {
-        $liblist .= $row['library_id'].",";
-      }
+    while ($row = $result->fetch_assoc()) {
+      $counter = $counter+1;
+      $liblist .= $row['library_id'].",";
+    }
     $liblist = rtrim($liblist, ",");
   }
   elseif (!empty($_REQUEST['geneinfo'] == "View Alligator") || !empty($_REQUEST['geneinfo'] == "View Alligator Overlapping Genes")) {
     $result = $db_conn->query($aquery);
     while ($row = $result->fetch_assoc()) {
+      $counter = $counter+1;
         $liblist .= $row['library_id'].",";
       }
      $liblist = rtrim($liblist, ",");
@@ -31,6 +33,7 @@ $liblist = null;
   elseif (!empty($_REQUEST['geneinfo'] == "View Mouse") || !empty($_REQUEST['geneinfo'] == "View Mouse Overlapping Genes")) {
     $result = $db_conn->query($mquery);
     while ($row = $result->fetch_assoc()) {
+        $counter = $counter+1;
         $liblist .= $row['library_id'].",";
       }
      $liblist = rtrim($liblist, ",");
@@ -40,6 +43,7 @@ $liblist = null;
     $query = 'select library_id from vw_libraryinfo WHERE library_id in ('.$_POST['search'].')';
     $result = $db_conn->query($query);
     while ($row = $result->fetch_assoc()) {
+      $counter = $counter + 1;
         $liblist .= $row['library_id'].",";
       }
     $liblist = rtrim($liblist, ",");
@@ -79,52 +83,73 @@ $liblist = null;
     switch ($_POST['geneinfo']) {
       case "View Genes":
         $thename = "GenesAll";
+        $number = -1;
         break;
       case "View Gallus":
         $thename = "GallusAll";
+        $number = shell_exec("cat /home/modupe/public_html/atlas/LIBFPKMDUMP/Gallus.no"); 
+        $storedoutput = "/home/modupe/public_html/atlas/LIBFPKMDUMP/GallusAll.txt.gz";
         break;
       case "View Alligator":
         $thename = "AlligatorAll";
+        $number = shell_exec("cat /home/modupe/public_html/atlas/LIBFPKMDUMP/Alligator.no"); 
+        $storedoutput = "/home/modupe/public_html/atlas/LIBFPKMDUMP/AlligatorAll.txt.gz";
         break;
       case "View Mouse":
         $thename = "MouseAll";
+        $number = shell_exec("cat /home/modupe/public_html/atlas/LIBFPKMDUMP/Mouse.no"); 
+        $storedoutput = "/home/modupe/public_html/atlas/LIBFPKMDUMP/MouseAll.txt.gz";
         break;
       case "View Overlapping Genes":
         $thename = "GeneOverlap";
+        $number = -1;
         break;
       case "View Gallus Overlapping Genes":
         $thename = "GallusOverlap";
+        $number = shell_exec("cat /home/modupe/public_html/atlas/LIBFPKMDUMP/Gallus.no"); 
+        $storedoutput = "/home/modupe/public_html/atlas/LIBFPKMDUMP/GallusOverlap.txt.gz";
         break;
       case "View Alligator Overlapping Genes":
         $thename = "AlligatorOverlap";
+        $number = shell_exec("cat /home/modupe/public_html/atlas/LIBFPKMDUMP/Alligator.no"); 
+        $storedoutput = "/home/modupe/public_html/atlas/LIBFPKMDUMP/AlligatorOverlap.txt.gz";
         break;
       case "View Mouse Overlapping Genes":
         $thename = "MouseOverlap";
+        $number = shell_exec("cat /home/modupe/public_html/atlas/LIBFPKMDUMP/Mouse.no"); 
+        $storedoutput = "/home/modupe/public_html/atlas/LIBFPKMDUMP/MouseOverlap.txt.gz";
         break;
     }
 ?>
 <?php
     if (!empty($liblist)){
-	$output = "$base_path/OUTPUT/$thename"."_".$explodedate;
-	$output1 = "$base_path/OUTPUT/$thename"."_".$explodedate.".txt";
-      if (preg_match("/Overlap$/",$thename)) {
-        $pquery = "perl $base_path/SQLscripts/outputcommagenes.pl -1 ".$liblist." -2 ".$output."";
+      if ($counter == $number){
+        print $storedoutput; print $thename;
+        header('Location:results.php?file='.$storedoutput.'&name='.$thename.'.txt.gz');
       }
       else {
-        $pquery = "perl $base_path/SQLscripts/outputgenequery.pl -1 ".$liblist." -2 ".$output."";
-      }
+        $output = "$base_path/OUTPUT/$thename"."_".$explodedate;
+        $output1 = "$base_path/OUTPUT/$thename"."_".$explodedate.".txt";
+        if (preg_match("/Overlap$/",$thename)) {
+          $pquery = "perl $base_path/SQLscripts/outputcommagenes.pl -1 ".$liblist." -2 ".$output."";
+        }
+        else {
+          $pquery = "perl $base_path/SQLscripts/outputgenequery.pl -1 ".$liblist." -2 ".$output."";
+        }
 ?>
-   <br>Processing<br>
-<?php
-      //print $pquery;
-      shell_exec($pquery);
-      $filesize = explode("/", exec("du -k $output1")); 
-      if ($filesize[0] > 1000 ){ //zip files larger than 1Mb
-        shell_exec("gzip $output1");
-        header('Location:results.php?file='.$output1.'.gz&name='.$thename.'.txt.gz');
-      }
-      else {
-        header('Location:results.php?file='.$output1.'&name='.$thename.'.txt');
+     <br>Processing<br>
+<?PHP
+        // print $pquery;
+        // print "\nthis is counter $counter, this is number$number";
+        shell_exec($pquery);
+        $filesize = explode("/", exec("du -k $output1")); 
+        if ($filesize[0] > 1000 ){ //zip files larger than 1Mb
+          shell_exec("gzip $output1");
+          header('Location:results.php?file='.$output1.'.gz&name='.$thename.'.txt.gz');
+        }
+        else {
+          header('Location:results.php?file='.$output1.'&name='.$thename.'.txt');
+        }
       }
     }
   }

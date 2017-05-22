@@ -62,16 +62,16 @@
 							<tr>
 								<!--libraries-->
 								<td class="menu_button">
-									<a href="libfpkm.php" class="TAbutton"><img src="images/libraries.png" width="45" height="45"><br>Libraries Expression
-									<span class="right"><b>Libraries Expression Analysis:</b>
+									<a href="libfpkm.php" class="TAbutton"><img src="images/libraries.png" width="45" height="45"><br>Library Expression
+									<span class="right"><b>Library Expression Analysis:</b>
 									<ul style="margin: 0; padding-left:20px; list-style: none;"><li>Provides the list of genes and their expression values of all the libraries specified.</li></ul>
 									</span></a>
 								</td>
 								<!--geneexp-->
 								<td class="menu_button">
-									<a href="geneexp.php" class="TAbutton"><img src="images/genes.png" width="45" height="45"><br>Genes Expression
+									<a href="geneexp.php" class="TAbutton"><img src="images/genes.png" width="45" height="45"><br>Gene Expression
 									<span><b>Gene Expression Results:</b>
-									<ul style="margin: 0; padding-right:20px; list-style: none;"><li>Gives basic statistics on genes expression FPKM values based on tissues of interest and distinct lines.</li></ul>
+									<ul style="margin: 0; padding-right:20px; list-style: none;"><li>Gives basic statistics on gene expression FPKM values based on tissues of interest and distinct lines.</li></ul>
 									</span></a>
 								</td>
 							</tr>
