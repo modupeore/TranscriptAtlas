@@ -68,6 +68,7 @@ echo '';
 	<option value="alligator_mississippiensis" <?php if ($_POST['species']=='alligator_mississippiensis') echo 'selected="selected"'; ?> >alligator_mississippiensis</option>
 	<option value="homo_sapiens" <?php if ($_POST['species']=='homo_sapiens') echo 'selected="selected"'; ?> >homo_sapiens</option>
 	<option value="tardigrade" <?php if ($_POST['species']=='tardigrade') echo 'selected="selected"'; ?> >tardigrade</option>
+        <option value="scorpiones" <?php if ($_POST['species']=='scorpiones') echo 'selected="selected"'; ?> >scorpiones</option>
 	</select></td> <!--species-->
 <td class="borders"><input type="text" class="forms" name="line"<?php if(!empty($db_conn)){echo 'value="'.$line.'"';}?>/></td> <!--line-->
 <td class="borders"><input type="text" class="forms" name="tissue"<?php if(!empty($db_conn)){echo 'value="'.$tissue.'"';}?>/></td> <!--tissue-->

@@ -17,31 +17,31 @@ GetOptions(
 			"7|line=s"	=>\$linez
 );
 
-my $AILHC = 'track type=vcfTabix name=\"AIL HC&HS\" description=\"AIL HC&HS\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/AIL%20HC\&HS.vcf.gz';
+my $AILHC = 'track type=vcfTabix name=\"AIL HC&HS\" description=\"AIL HC&HS\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/AIL_HCHS.vcf.gz';
 
-my $AIL = 'track type=vcfTabix name=\"AIL-Normal\" description=\"AIL-Normal\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/AIL-Normal.vcf.gz';
+my $AIL = 'track type=vcfTabix name=\"AIL-Normal\" description=\"AIL-Normal\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/AIL-NORMAL.vcf.gz';
 
-my $Broiler = 'track type=vcfTabix name=\"Broiler\" description=\"Broiler\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Broiler.vcf.gz';
+my $Broiler = 'track type=vcfTabix name=\"Broiler\" description=\"Broiler\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/BROILER.vcf.gz';
 
 my $CELC = 'track type=vcfTabix name=\"CELC\" description=\"CELC\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/CELC.vcf.gz';
 
-my $FayoumiChick = 'track type=vcfTabix name=\"Fayoumi-chick HS\" description=\"Fayoumi-chick HS\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi-chick%20HS.vcf.gz';
+my $FayoumiChick = 'track type=vcfTabix name=\"Fayoumi-chick HS\" description=\"Fayoumi-chick HS\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/FAYOUMI-CHICK_HS.vcf.gz';
 
-my $FayoumiHC = 'track type=vcfTabix name=\"Fayoumi HC&HS\" description=\"Fayoumi HC&HS\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi%20HC\&HS.vcf.gz';
+my $FayoumiHC = 'track type=vcfTabix name=\"Fayoumi HC&HS\" description=\"Fayoumi HC&HS\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/FAYOUMI-HCHS.vcf.gz';
 
-my $FayoumiNormal = 'track type=vcfTabix name=\"Fayoumi-Normal\" description=\"Fayoumi-Normal\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi-Normal.vcf.gz';
+my $FayoumiNormal = 'track type=vcfTabix name=\"Fayoumi-Normal\" description=\"Fayoumi-Normal\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/FAYOUMI-NORMAL.vcf.gz';
 
-my $Fayoumi = 'track type=vcfTabix name=\"Fayoumi\\" description=\"Fayoumi\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi.vcf.gz';
+my $Fayoumi = 'track type=vcfTabix name=\"Fayoumi\\" description=\"Fayoumi\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/FAYOUMI.vcf.gz';
 
-my $FayoumiBroiler = 'track type=vcfTabix name=\"Fayoumi x Broiler\" description=\"Fayoumi x Broiler\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Fayoumi%20x%20Broiler.vcf.gz';
+my $FayoumiBroiler = 'track type=vcfTabix name=\"Fayoumi x Broiler\" description=\"Fayoumi x Broiler\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/FAYOUMI_X_BROILER.vcf.gz';
 
-my $Illinois = 'track type=vcfTabix name=\"Illinois\" description=\"Illinois\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Illinois.vcf.gz';
+my $Illinois = 'track type=vcfTabix name=\"Illinois\" description=\"Illinois\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/ILLINOIS.vcf.gz';
 
 my $LMH = 'track type=vcfTabix name=\"LMH\" description=\"LMH\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/LMH.vcf.gz';
 
-my $Ross = 'track type=vcfTabix name=\"Ross\" description=\"Ross\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Ross.vcf.gz';
+my $Ross = 'track type=vcfTabix name=\"Ross\" description=\"Ross\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/ROSS.vcf.gz';
 
-my $Ugandan = 'track type=vcfTabix name=\"Ugandan\" description=\"Ugandan\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/Ugandan.vcf.gz';
+my $Ugandan = 'track type=vcfTabix name=\"Ugandan\" description=\"Ugandan\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/UGANDAN.vcf.gz';
 
 my $WLH = 'track type=vcfTabix name=\"WLH\" description=\"WLH\" bigDataUrl=http://raven.anr.udel.edu/~modupe/UCSC/WLH.vcf.gz';
 
