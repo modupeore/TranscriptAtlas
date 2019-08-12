@@ -23,12 +23,24 @@ function d_header() {
           <td width=50px></td>
         </tr>
       </table>
+ ";
+?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89812500-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-89812500-1');
+</script>
     </head>
     <body>
       <div class=\"container\">
-  ";
+<?PHP
 }
 ?>
+
 <?php //About Page
 function d_about_header() {
   d_header();

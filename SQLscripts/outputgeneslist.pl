@@ -35,9 +35,9 @@ foreach my $ftissue (@tissue){
 	foreach my $fgene (@genes) {
 		if ($species =~ /gallus/) {
 			$ibis = "/home/modupe/.bin/bin/ibis -d $chickengenes -q '";
-		} elsif (/mus/) {
+		} elsif ($species =~ /mus/) {
 			$ibis = "/home/modupe/.bin/bin/ibis -d $mousegenes -q '";
-		} elsif (/alligator/) {
+		} elsif ($species =~ /alligator/) {
 			$ibis = "/home/modupe/.bin/bin/ibis -d $alligatorgenes -q '";
 		} else {
 			die "Error in input options\n";

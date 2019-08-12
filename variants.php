@@ -25,10 +25,15 @@
   if (!empty($_SESSION['species']) && !empty($_REQUEST['variantsview'])){
     print "<script>window.location.href='variants-genename.php'</script>";
   }
+
 ?>
 <form action="variants.php" method="post"><center>
-  <input type="image" class="vbtn" src="images/hen.png" alt="CHICKEN" style="width:200px;height:200px;padding:10pt;border:solid black;border-radius:20px;" name="variantsview" value="chicken" />&nbsp;&nbsp;
-  <input type="image" class="vbtn" src="images/mouse.png" alt="MOUSE" style="width:200px;height:200px;padding:10pt;border:solid black;border-radius:20px;" name="variantsview"  value="mouse" />&nbsp;&nbsp;
-  <input type="image" class="vbtn" src="images/alligator.png" alt="ALLIGATOR" style="width:200px;height:200px;padding:10pt;border:solid black;border-radius:20px;" name="variantsview" value="alligator"/>&nbsp;&nbsp;
+  <input type="submit" name="variantsview" value="chicken"/>
+  <input type="submit" name="variantsview" value="mouse" />
+  <input type="submit" name="variantsview" value="alligator" /><br>
+  <!--<input type="image" src="images/hen.png" alt="CHICKEN" style="width:200px;height:200px;padding:10pt;border:solid black;border-radius:20px;" name="variantsview" value="chicken" />&nbsp;&nbsp;
+  <input type="image" src="images/mouse.png" alt="MOUSE" style="width:200px;height:200px;padding:10pt;border:solid black;border-radius:20px;" name="variantsview"  value="mouse" />&nbsp;&nbsp;
+  <input type="image" src="images/alligator.png" alt="ALLIGATOR" style="width:200px;height:200px;padding:10pt;border:solid black;border-radius:20px;" name="variantsview" value="alligator"/>&nbsp;&nbsp;
+-->
 </center></form>
 

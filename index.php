@@ -11,7 +11,17 @@
 			TranscriptAtlas
 		</title>
 	<header> <h1>Welcome <?php echo $_SESSION['firstname'] ?></h1></header>
-        </head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-89812500-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-89812500-1');
+</script>
+
+	</head>
 	<body>
 		<div class="allofit">
 			<table>

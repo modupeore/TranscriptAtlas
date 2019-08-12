@@ -337,7 +337,7 @@
         $dataline = rtrim($dataline, ",");
         $listfile = "metadata_".$explodedate.".txt";
         $output1 = "$base_path/OUTPUT/$listfile";
-        $pquery = "perl ".$base_path."/SQLscripts/outputmetadata.pl -1 ".$dataline." -2 ".$output1." -m";
+        $pquery = "python ".$base_path."/SQLscripts/outputmetadata.py --in ".$dataline." --output ".$output1." --metadata";
         shell_exec($pquery); 
         print("<script>location.href='results.php?file=$output1&name=metadata.txt'</script>");
       }

@@ -32,10 +32,10 @@
 		</td>
 		<td>
 			<b>&nbsp;&nbsp;Summary of libraries processed</b><br>
-			<?php $eee = shell_exec("perl ".$base_path."/SQLscripts/summarystats.pl "); echo $eee;?>
+			<?php $eee = shell_exec("python ".$base_path."/SQLscripts/summarystats.py "); echo $eee;?>
 			<br>
 			<b>&nbsp;&nbsp;Summary of database content</b><br>
-			<?php $fff = shell_exec("perl ".$base_path."/SQLscripts/summarylibraries.pl "); echo $fff;?>
+			<?php $fff = shell_exec("python ".$base_path."/SQLscripts/summarylibraries.py "); echo $fff;?>
 		</td>
 	</tr>
 </table>

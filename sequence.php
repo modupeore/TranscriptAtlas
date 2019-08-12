@@ -340,7 +340,7 @@
         $dataline = rtrim($dataline, ",");
         $listfile = "sequence_".$explodedate.".txt";
         $output1 = "$base_path/OUTPUT/$listfile";
-        $pquery = "perl ".$base_path."/SQLscripts/outputmetadata.pl -1 ".$dataline." -2 ".$output1." -z";
+        $pquery = "python ".$base_path."/SQLscripts/outputmetadata.py --in ".$dataline." --output ".$output1." --sequence";
         shell_exec($pquery); 
         print("<script>location.href='results.php?file=$output1&name=sequenceinfo.txt'</script>");
       }
@@ -378,7 +378,7 @@
         $dataline = rtrim($dataline, ",");
         $listfile = "sequence_".$explodedate.".txt";
         $output1 = "$base_path/OUTPUT/$listfile";
-        $pquery = "perl ".$base_path."/SQLscripts/outputmetadata.pl -1 ".$dataline." -2 ".$output1." -z";
+        $pquery = "python ".$base_path."/SQLscripts/outputmetadata.py --in ".$dataline." --output ".$output1." --sequence";
         shell_exec($pquery); 
         print("<script>location.href='results.php?file=$output1&name=sequenceinfo.txt'</script>");
       }
