@@ -93,11 +93,11 @@
 									<ul style="margin: 0; padding-left:20px; list-style: none;"><li>Gives lists of variants and annotation information based on chromosomal location or gene specified.</li></ul>
 									</span></a>
 								</td>
-								<!--kaks-->
+								<!--GG6-->
 								<td class="menu_button">
-									<a href="kaksratios.php" class="TAbutton"><img src="images/variant.png" width="45" height="45"><br>Ka/Ks
-									<span><b>Degree of selection:</b>
-									<ul style="margin: 0; padding-right:20px; list-style: none;"><li>Provides preliminary selection information of a given subset of samples.</li></ul>
+									<a href="http://raven.anr.udel.edu/~modupe/GG6atlas" class="TAbutton" target="_blank"><br><font size=20%>GG6</font>
+									<span><b>Updated libraries:</b>
+									<ul style="margin: 0; padding-right:20px; list-style: none;"><li>Libraries mapped to Galgal6 genome<br>N.B. Will open a new window</li></ul>
 									</span></a>
 								</td>
 							</tr>
